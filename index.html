@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d2c">
+  <title>Chemie Lab — Lernhub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient"></div>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="logo">⚗</span><span>CHEM<span class="accent">LAB</span></span></a>
+    <div class="tag">KLASSE 9 · MITTELSCHULE</div>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse"></span> DEIN DIGITALER LERNHUB</div>
+        <h1>Chemie muss<br><span>nicht kompliziert</span> sein.</h1>
+        <p>Ein bisschen Wissen, ein paar Fragen und du bist ready für die Probe. Willkommen im Chemie-Lab.</p>
+        <div class="hero-actions">
+          <button class="primary" onclick="startQuiz()">Quiz starten <span>↗</span></button>
+          <a class="secondary" href="#cards">Lernkarten ansehen ↓</a>
+        </div>
+      </div>
+      <div class="molecule-art" aria-label="Dekorative Molekülillustration">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="atom atom-center">C</div><div class="atom atom-a">H</div><div class="atom atom-b">H</div><div class="atom atom-c">H</div><div class="atom atom-d">H</div>
+        <div class="bond bond-a"></div><div class="bond bond-b"></div><div class="bond bond-c"></div><div class="bond bond-d"></div>
+        <div class="art-caption">METHAN · CH₄</div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong>20</strong><span>Übungsfragen</span></div><div><strong>3</strong><span>Themenbereiche</span></div><div><strong>∞</strong><span>Versuche</span></div>
+    </section>
+    <section class="section" id="topics">
+      <div class="section-heading"><div><div class="eyebrow">WAS STEHT AN?</div><h2>Deine Themen</h2></div><span class="section-note">Kurz & verständlich</span></div>
+      <div class="topic-grid">
+        <article class="topic-card"><div class="topic-icon teal">♧</div><div class="topic-number">01 / BIOGAS</div><h3>Biogas</h3><p>Wie aus organischen Abfällen ein Energieträger wird – und was im Fermenter passiert.</p><a href="#cards" onclick="setCardTopic('biogas')">Karteikarten dazu <span>→</span></a></article>
+        <article class="topic-card"><div class="topic-icon orange">✦</div><div class="topic-number">02 / CH₄</div><h3>Methan</h3><p>Das kleinste Alkan: Aufbau, Eigenschaften und was bei der Verbrennung entsteht.</p><a href="#cards" onclick="setCardTopic('methan')">Karteikarten dazu <span>→</span></a></article>
+        <article class="topic-card"><div class="topic-icon purple">⌬</div><div class="topic-number">03 / CₙH₂ₙ₊₂</div><h3>Alkane</h3><p>Die homologe Reihe, Formeln und die Eigenschaften der Kohlenwasserstoffe.</p><a href="#cards" onclick="setCardTopic('alkane')">Karteikarten dazu <span>→</span></a></article>
+      </div>
+    </section>
+    <section class="section quiz-section" id="quiz">
+      <div class="section-heading"><div><div class="eyebrow">WISSEN CHECKEN</div><h2>Mini-Quiz</h2></div><span class="section-note">Mach den Selbsttest</span></div>
+      <div class="quiz-panel" id="quizPanel">
+        <div class="quiz-top"><span class="quiz-label">CHEM-CHECK</span><span id="quizCount">Frage 1 / 10</span></div>
+        <div class="progress"><div id="progressBar"></div></div>
+        <h3 id="questionText">Drück auf „Quiz starten“, um loszulegen.</h3>
+        <div class="answers" id="answerButtons"></div>
+        <div class="quiz-bottom"><span id="feedback">Du kannst das Quiz jederzeit neu starten.</span><button id="nextBtn" class="primary small" onclick="nextQuestion()" disabled>Weiter →</button></div>
+      </div>
+    </section>
+    <section class="section" id="cards">
+      <div class="section-heading"><div><div class="eyebrow">WIEDERHOLEN</div><h2>Lernkarten</h2></div><span class="section-note">Tippe auf die Karte, um sie umzudrehen</span></div>
+      <div class="card-controls"><button class="filter active" onclick="setCardTopic('all',this)">Alle</button><button class="filter" onclick="setCardTopic('biogas',this)">Biogas</button><button class="filter" onclick="setCardTopic('methan',this)">Methan</button><button class="filter" onclick="setCardTopic('alkane',this)">Alkane</button></div>
+      <div class="flashcard" id="flashcard" onclick="flipCard()" tabindex="0" role="button" aria-label="Lernkarte umdrehen"><div class="flash-inner"><div class="flash-front"><span class="flash-kicker" id="cardTopic">LERNKARTE</span><h3 id="cardQuestion">Was sind Alkane?</h3><div class="flip-hint">↻ Tippe, um die Antwort zu sehen</div></div><div class="flash-back"><span class="flash-kicker">ANTWORT</span><p id="cardAnswer">Alkane sind Kohlenwasserstoffe, die nur Einfachbindungen besitzen.</p><div class="flip-hint">↻ Tippe zum Zurückdrehen</div></div></div></div>
+      <div class="card-nav"><button class="secondary" onclick="prevCard()">← Zurück</button><span id="cardCounter">1 / 1</span><button class="secondary" onclick="nextCard()">Weiter →</button></div>
+    </section>
+    <section class="section final-cta"><div><div class="eyebrow">DU SCHAFFST DAS</div><h2>Wissen sitzt besser,<br>wenn man es <span>übt.</span></h2><p>Mach noch eine Runde. Jeder Versuch zählt.</p></div><button class="primary" onclick="startQuiz()">Noch eine Quizrunde ↗</button></section>
+  </main>
+  <footer><span>⚗ CHEMLAB</span><span>Made for learning · Klasse 9</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
